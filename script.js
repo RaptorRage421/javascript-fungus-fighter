@@ -86,12 +86,22 @@ function renderHP() {
     hpValue.value = fungusHP
     hpText.innerText = Number(fungusHP)
     console.log("New Rendered HP Value: ", hpValue.value)
+    if (fungusHP < 50){
+        setInterval(() => {
+        hpValue.value +=1  
+        hpText.innerText = hpValue.value   
+        console.log("Regenerating...", hpText.innerText)
+        }, 1000);
+        
+    
+    }
     if (fungusHP < 0){
         fungusHP = 0
+        hpValue.value = 0
+        hpText.innerText = hpValue.value
         defeat.remove('walk')
         defeat.add('dead')
     }
-    
 }
 
 function renderAP() {
@@ -114,8 +124,16 @@ function renderAP() {
     apValue.value = attackPoints
     console.log('New Rendered AP Value: ', apValue.value)
    
-// console.log(apValue) 
+
 }
+
+
+// let regenerate = setInterval(function(renderHP) {
+//     fungusHP += 1
+//     if (fungusHP === 50){
+//         clearInterval(regenerate)
+//     }
+// }, 1000)
 
 
 
