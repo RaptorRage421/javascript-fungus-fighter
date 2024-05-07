@@ -115,13 +115,11 @@ function renderHP() {
             hpValue.value += 1
             hpText.innerHTML = hpValue.value
             console.log("Regenerating...", fungusHP)
-            if (fungusHP >= 50 || fungusHP === 0) {
+            if (fungusHP >= 50) {
                 clearInterval(regenerate)
                 
             }
-            if (fungusHP === 0){
-                clearInterval(regenerate)
-            }
+            
         }, 1000)
     }
     hpValue.value = fungusHP
