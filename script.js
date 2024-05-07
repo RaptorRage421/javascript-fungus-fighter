@@ -22,12 +22,15 @@ onReady()
 
 function arcaneScepterAttack() {
     console.log("ARCANE SCEPTER WORKS")
-    const cost = [{
+    const cost = {
         apCost: 12,
         damage: 14
-    }]
+    }
+    console.log(cost.damage)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
+    console.log("HP Remaining: ", fungusHP)
+    console.log("Attack Points Remaining: ", attackPoints)
     renderHP()
     renderAP()
 }
@@ -61,16 +64,22 @@ function starFireAttack() {
 
 function renderHP() {
     console.log("renderHP is Working")
+    
 }
 
 function renderAP() {
     console.log("renderAP is Working")
+    let apValue = document.getElementById('ap-meter')
+    let apText = document.getElementById('aptext')
+    console.log(apValue.value)
+    console.log(apText.innerText)
+    apText.innerText = Number(attackPoints)
+    apValue.value = attackPoints
+// console.log(apValue) 
 }
 
 
-let apValue = document.getElementById('ap-meter')
-apValue.value = attackPoints - 17
-console.log(apValue)
+
 
 let hpValue = document.getElementById('hp-meter')
 hpValue.value = fungusHP - 17
