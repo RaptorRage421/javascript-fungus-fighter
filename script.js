@@ -26,11 +26,19 @@ function arcaneScepterAttack() {
         apCost: 12,
         damage: 14
     }
-    console.log(cost.damage)
+    console.log(`Doing ${cost.damage} damage to the Fungus
+Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
     // console.log("HP Remaining: ", fungusHP)
     // console.log("Attack Points Remaining: ", attackPoints)
+    if (fungusHP < 0){
+        fungusHP = 0
+    }
+    if (attackPoints < 0){
+        attackPoints = 0
+    }
+    
     renderHP()
     renderAP()
 }
@@ -40,8 +48,17 @@ function entangleAttack() {
         apCost: 23,
         damage: 9
     }
+    console.log(`Doing ${cost.damage} damage to the Fungus
+    Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
+    if (fungusHP < 0){
+        fungusHP = 0
+    }
+    if (attackPoints < 0){
+        attackPoints = 0
+    }
+   
     renderHP()
     renderAP()
 }
@@ -51,11 +68,17 @@ function dragonBladeAttack() {
         apCost: 38,
         damage: 47
     }
+    console.log(`Doing ${cost.damage} damage to the Fungus
+    Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
     if (fungusHP < 0){
         fungusHP = 0
     }
+    if (attackPoints < 0){
+        attackPoints = 0
+    }
+   
     renderHP()
     renderAP()
 }
@@ -65,8 +88,16 @@ function starFireAttack() {
         apCost: 33,
         damage: 25
     }
+    console.log(`Doing ${cost.damage} damage to the Fungus
+Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
+    if (fungusHP < 0){
+        fungusHP = 0
+    }
+    if (attackPoints < 0){
+        attackPoints = 0
+    }
     renderHP()
     renderAP()
 }
