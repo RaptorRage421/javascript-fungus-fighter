@@ -8,25 +8,25 @@
     
     <link rel="stylesheet" href="style.css">
 
-    <script defer src="script.js"></script>
+    <script defer src="./script.js"></script>
 </head>
 <body>
     <div class="container">
         <img src="./images/forest-bg-dk.png" alt="forest bg" class="img-bg">
 
         <div class="attacks">
-            <div class="ap-text">100 AP</div>
+            <div class="ap-text"><span id="aptext">100</span> AP</div>
             <progress id="ap-meter" value="100" max="100"></progress>
-            <button class="attack-btn arcane-scepter"></button>
-            <button class="attack-btn entangle"></button>
-            <button class="attack-btn dragon-blade"></button>
-            <button class="attack-btn star-fire"></button>
+            <button id="arcane" class="attack-btn arcane-scepter"></button>
+            <button id="entangle" class="attack-btn entangle"></button>
+            <button id="dragon" class="attack-btn dragon-blade"></button>
+            <button id="starfire" class="attack-btn star-fire"></button>
         </div>
 
         <div class="enemy">
-            <div class="hp-text">100 HP</div>
+            <div class="hp-text"><span id="hptext">100</span> HP</div>
             <progress id="hp-meter" value="100" max="100"></progress>
-            <div class="freaky-fungus walk"></div>
+            <div id="outcome" class="freaky-fungus walk"></div>
         </div>
     </div>
 </body>

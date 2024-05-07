@@ -10,10 +10,6 @@ function onReady() {
     document.querySelector('.attack-btn.entangle').addEventListener('click', entangleAttack)
     document.querySelector('.attack-btn.dragon-blade').addEventListener('click', dragonBladeAttack)
     document.querySelector('.attack-btn.star-fire').addEventListener('click', starFireAttack)
-    document.querySelector('.attack-btn.arcane-scepter').addEventListener('mouseover', showAP);
-    document.querySelector('.attack-btn.entangle').addEventListener('mouseover', showAP)
-    document.querySelector('.attack-btn.dragon-blade').addEventListener('mouseover', showAP)
-    document.querySelector('.attack-btn.star-fire').addEventListener('mouseover', showAP)
     // Make sure you check the index.html file! 
     // There are lots of buttons and things ready for you to hook into here!
     // 🧠 Remember
@@ -37,6 +33,8 @@ Using ${cost.apCost} AP`)
     attackPoints -= cost.apCost
     renderHP()
     renderAP()
+    console.log("New fungus HP: ", fungusHP)
+    console.log("New Attack Points: ", attackPoints)
 }
 
 
@@ -78,48 +76,37 @@ function starFireAttack() {
 Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
-    if ((fungusHP - cost.damage) <  0){
-        fungusHP = 0
-    }
-    if ((attackPoints -cost.damage) < 0){
-        attackPoints = 0
-    }
     renderHP()
     renderAP()
 }
-
+let hpValue = document.getElementById('hp-meter')
+    let hpText = document.getElementById('hptext')
 function renderHP() {
     console.log("renderHP is Working")
     let defeat = document.getElementById('outcome').classList
-    let hpValue = document.getElementById('hp-meter')
-    let hpText = document.getElementById('hptext')
-
+    
+    hpValue.value = fungusHP
     hpText.innerText = Number(fungusHP)
     console.log("New Rendered HP Value: ", hpValue.value)
     if (fungusHP <= 0) {
         fungusHP = 0
-        hpValue.value = 0
-        hpText.innerText = 0
+        console.log(fungusHP)
+        hpValue.value = fungusHP
+        hpText.innerText = hpValue.value
+        console.log(hpValue.value)
         defeat.remove('walk')
         defeat.add('dead')
     }
     if (fungusHP < 50) {
 
-        let regenerate = setInterval(function () {
-            fungusHP += 1
-            hpValue.value += 1
-            hpText.innerHTML = hpValue.value
-            console.log("Regenerating...", fungusHP)
-            if (fungusHP >= 50) {
-                clearInterval(regenerate)
-                
-            }
-        }, 1000)
+        let hardened = setInterval(regenerate, 1000)
+        if (hpValue.value >= 50) {
+            clearInterval(hardened)
     }
-    hpValue.value = fungusHP
-    hpText.innerText = Number(fungusHP)
-    hpText.innerText = Number(fungusHP)
-    console.log("New Rendered HP Value: ", hpValue.value)
+    // if (hpValue.value >= 50) {
+    //     clearInterval(regenerate)
+    }
+    
 }
 
 
@@ -130,15 +117,13 @@ function renderAP() {
     let buttons = document.getElementsByClassName('attack-btn')
     let apValue = document.getElementById('ap-meter')
     let apText = document.getElementById('aptext')
-    if (attackPoints < 12) {
+    if (attackPoints < 0) {
+        attackPoints = 0
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].disabled = true
         }
         defeat.remove('walk')
         defeat.add('jump')
-    }
-    if (attackPoints <= 0){
-        attackPoints = 0
     }
     apText.innerText = Number(attackPoints)
     apValue.value = attackPoints
@@ -146,8 +131,13 @@ function renderAP() {
 }
 
 
-function showAP(event){
-
+function regenerate() {
+    fungusHP += 1
+    hpValue.value +=1
+    hpText.innerHTML = hpValue.value
+    console.log("Regenerating...", hpValue.value)
+   
+    
 }
 
 
