@@ -36,50 +36,53 @@ function arcaneScepterAttack() {
 }
 function entangleAttack() {
     console.log("ENTAGLE WORKS")
-    const cost = [{
+    const cost = {
         apCost: 23,
         damage: 9
-    }]
+    }
     renderHP()
     renderAP()
 }
 function dragonBladeAttack() {
     console.log("DRAGON BLADE WORKS")
-    const cost = [{
+    const cost = {
         apCost: 38,
         damage: 47
-    }]
+    }
     renderHP()
     renderAP()
 }
 function starFireAttack() {
     console.log("STAR FIRE WORKS")
-    const cost = [{
+    const cost = {
         apCost: 33,
         damage: 25
-    }]
+    }
     renderHP()
     renderAP()
 }
 
 function renderHP() {
     console.log("renderHP is Working")
-    
+    let hpValue = document.getElementById('hp-meter')
+    let hpText = document.getElementById('hptext').innerText
+    hpValue.value = fungusHP
+    hpText = Number(fungusHP)
+    console.log("New Rendered HP Value: ", hpText)
 }
 
 function renderAP() {
     console.log("renderAP is Working")
     let apValue = document.getElementById('ap-meter')
     let apText = document.getElementById('aptext')
-    console.log(apValue.value)
-    console.log(apText.innerText)
+    
     apText.innerText = Number(attackPoints)
     apValue.value = attackPoints
+    console.log('New Rendered AP Value: ', apValue.value)
+   
 // console.log(apValue) 
 }
 
 
 
 
-let hpValue = document.getElementById('hp-meter')
-hpValue.value = fungusHP - 17
