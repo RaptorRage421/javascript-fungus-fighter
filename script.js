@@ -22,7 +22,7 @@ onReady()
 
 
 function arcaneScepterAttack() {
-    let button = document.getElementById('arcane')
+    
     
 
     console.log("ARCANE SCEPTER WORKS")
@@ -39,10 +39,7 @@ Using ${cost.apCost} AP`)
     if (fungusHP < 0){
         fungusHP = 0
     }
-    if (attackPoints <= 0){
-        attackPoints = 0
-       button.disabled = true
-    }
+    
     
     renderHP()
     renderAP()
@@ -62,10 +59,7 @@ function entangleAttack() {
     if (fungusHP < 0){
         fungusHP = 0
     }
-    if (attackPoints <= 0){
-        attackPoints = 0
-       button.disabled = true
-    }
+  
 
    
     renderHP()
@@ -86,10 +80,7 @@ function dragonBladeAttack() {
     if (fungusHP < 0){
         fungusHP = 0
     }
-    if (attackPoints <= 0){
-        attackPoints = 0
-       button.disabled = true
-    }
+   
    
     renderHP()
     renderAP()
@@ -109,10 +100,7 @@ Using ${cost.apCost} AP`)
     if (fungusHP < 0){
         fungusHP = 0
     }
-    if (attackPoints <= 0){
-        attackPoints = 0
-       button.disabled = true
-    }
+    
     renderHP()
     renderAP()
 }
@@ -128,13 +116,14 @@ function renderHP() {
 
 function renderAP() {
     console.log("renderAP is Working")
-    
+    let buttons = document.getElementsByClassName('attack-btn')
     let apValue = document.getElementById('ap-meter')
     let apText = document.getElementById('aptext')
     if (attackPoints <= 0){
         attackPoints = 0
-        button.disabled = true
-       
+        for (let i=0; i<buttons.length;i++){
+            buttons[i].disabled = true
+        }
     }
    
     apText.innerText = Number(attackPoints)
