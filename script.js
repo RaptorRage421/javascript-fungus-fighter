@@ -36,3 +36,10 @@ function starFireAttack() {
     console.log("STAR FIRE WORKS")
 
 }
+
+let apValue = document.getElementById('ap-meter')
+apValue.value = attackPoints - 17
+console.log(apValue)
+
+let hpValue = document.getElementById('hp-meter')
+hpValue.value = fungusHP - 17
