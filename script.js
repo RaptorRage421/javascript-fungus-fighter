@@ -22,9 +22,6 @@ onReady()
 
 
 function arcaneScepterAttack() {
-    
-    
-
     console.log("ARCANE SCEPTER WORKS")
     const cost = {
         apCost: 12,
@@ -34,19 +31,12 @@ function arcaneScepterAttack() {
 Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
-    // console.log("HP Remaining: ", fungusHP)
-    // console.log("Attack Points Remaining: ", attackPoints)
-    if (fungusHP < 0){
-        fungusHP = 0
-    }
-    
-    
     renderHP()
     renderAP()
-
 }
+
+
 function entangleAttack() {
-    let button = document.getElementById('entangle')
     console.log("ENTAGLE WORKS")
     const cost = {
         apCost: 23,
@@ -56,19 +46,12 @@ function entangleAttack() {
     Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
-    if (fungusHP < 0){
-        fungusHP = 0
-    }
-  
-
-   
     renderHP()
     renderAP()
 }
+
 function dragonBladeAttack() {
-    let button = document.getElementById('dragon')
     console.log("DRAGON BLADE WORKS")
-    
     const cost = {
         apCost: 38,
         damage: 47
@@ -77,18 +60,12 @@ function dragonBladeAttack() {
     Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
-    if (fungusHP < 0){
-        fungusHP = 0
-    }
-   
-   
     renderHP()
     renderAP()
 }
+
 function starFireAttack() {
-    let button = document.getElementById('starfire')
     console.log("STAR FIRE WORKS")
-    
     const cost = {
         apCost: 33,
         damage: 25
@@ -97,25 +74,30 @@ function starFireAttack() {
 Using ${cost.apCost} AP`)
     fungusHP -= cost.damage
     attackPoints -= cost.apCost
-    if (fungusHP < 0){
-        fungusHP = 0
-    }
-    
     renderHP()
     renderAP()
 }
 
 function renderHP() {
     console.log("renderHP is Working")
+    let defeat = document.getElementById('outcome').classList
     let hpValue = document.getElementById('hp-meter')
     let hpText = document.getElementById('hptext')
     hpValue.value = fungusHP
     hpText.innerText = Number(fungusHP)
     console.log("New Rendered HP Value: ", hpValue.value)
+    if (fungusHP < 0){
+        fungusHP = 0
+        defeat.remove('walk')
+        defeat.add('dead')
+    }
+    
 }
 
 function renderAP() {
     console.log("renderAP is Working")
+    let defeat = document.getElementById('outcome').classList
+    console.log('class list', defeat)
     let buttons = document.getElementsByClassName('attack-btn')
     let apValue = document.getElementById('ap-meter')
     let apText = document.getElementById('aptext')
@@ -124,6 +106,8 @@ function renderAP() {
         for (let i=0; i<buttons.length;i++){
             buttons[i].disabled = true
         }
+        defeat.remove('walk')
+        defeat.add('jump')
     }
    
     apText.innerText = Number(attackPoints)
