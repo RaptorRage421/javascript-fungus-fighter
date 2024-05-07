@@ -22,20 +22,51 @@ onReady()
 
 function arcaneScepterAttack() {
     console.log("ARCANE SCEPTER WORKS")
-
+    const cost = [{
+        apCost: 12,
+        damage: 14
+    }]
+    fungusHP -= cost.damage
+    attackPoints -= cost.apCost
+    renderHP()
+    renderAP()
 }
 function entangleAttack() {
     console.log("ENTAGLE WORKS")
-
+    const cost = [{
+        apCost: 23,
+        damage: 9
+    }]
+    renderHP()
+    renderAP()
 }
 function dragonBladeAttack() {
     console.log("DRAGON BLADE WORKS")
-
+    const cost = [{
+        apCost: 38,
+        damage: 47
+    }]
+    renderHP()
+    renderAP()
 }
 function starFireAttack() {
     console.log("STAR FIRE WORKS")
-
+    const cost = [{
+        apCost: 33,
+        damage: 25
+    }]
+    renderHP()
+    renderAP()
 }
+
+function renderHP() {
+    console.log("renderHP is Working")
+}
+
+function renderAP() {
+    console.log("renderAP is Working")
+}
+
 
 let apValue = document.getElementById('ap-meter')
 apValue.value = attackPoints - 17
