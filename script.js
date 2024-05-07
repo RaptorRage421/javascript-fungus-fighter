@@ -20,7 +20,11 @@ function onReady() {
 
 onReady()
 
+
 function arcaneScepterAttack() {
+    let button = document.getElementById('arcane')
+    
+
     console.log("ARCANE SCEPTER WORKS")
     const cost = {
         apCost: 12,
@@ -35,14 +39,17 @@ Using ${cost.apCost} AP`)
     if (fungusHP < 0){
         fungusHP = 0
     }
-    if (attackPoints < 0){
+    if (attackPoints <= 0){
         attackPoints = 0
+       button.disabled = true
     }
     
     renderHP()
     renderAP()
+
 }
 function entangleAttack() {
+    let button = document.getElementById('entangle')
     console.log("ENTAGLE WORKS")
     const cost = {
         apCost: 23,
@@ -55,15 +62,19 @@ function entangleAttack() {
     if (fungusHP < 0){
         fungusHP = 0
     }
-    if (attackPoints < 0){
+    if (attackPoints <= 0){
         attackPoints = 0
+       button.disabled = true
     }
+
    
     renderHP()
     renderAP()
 }
 function dragonBladeAttack() {
+    let button = document.getElementById('dragon')
     console.log("DRAGON BLADE WORKS")
+    
     const cost = {
         apCost: 38,
         damage: 47
@@ -75,15 +86,18 @@ function dragonBladeAttack() {
     if (fungusHP < 0){
         fungusHP = 0
     }
-    if (attackPoints < 0){
+    if (attackPoints <= 0){
         attackPoints = 0
+       button.disabled = true
     }
    
     renderHP()
     renderAP()
 }
 function starFireAttack() {
+    let button = document.getElementById('starfire')
     console.log("STAR FIRE WORKS")
+    
     const cost = {
         apCost: 33,
         damage: 25
@@ -95,8 +109,9 @@ Using ${cost.apCost} AP`)
     if (fungusHP < 0){
         fungusHP = 0
     }
-    if (attackPoints < 0){
+    if (attackPoints <= 0){
         attackPoints = 0
+       button.disabled = true
     }
     renderHP()
     renderAP()
@@ -113,9 +128,15 @@ function renderHP() {
 
 function renderAP() {
     console.log("renderAP is Working")
+    
     let apValue = document.getElementById('ap-meter')
     let apText = document.getElementById('aptext')
-    
+    if (attackPoints <= 0){
+        attackPoints = 0
+        button.disabled = true
+       
+    }
+   
     apText.innerText = Number(attackPoints)
     apValue.value = attackPoints
     console.log('New Rendered AP Value: ', apValue.value)
