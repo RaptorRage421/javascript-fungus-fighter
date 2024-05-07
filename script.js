@@ -3,6 +3,7 @@
 // Example:
 let fungusHP = 100;
 let attackPoints = 100;
+let intvID;
 
 function onReady() {
     console.log("Ready to go!")
@@ -105,7 +106,7 @@ function renderHP() {
         hpText.innerText = 0
         defeat.remove('walk')
         defeat.add('dead')
-        return
+    
     }
     else if (fungusHP < 50) {
 
@@ -114,9 +115,12 @@ function renderHP() {
             hpValue.value += 1
             hpText.innerHTML = hpValue.value
             console.log("Regenerating...", fungusHP)
-            if (fungusHP >= 50) {
+            if (fungusHP >= 50 || fungusHP === 0) {
                 clearInterval(regenerate)
                 
+            }
+            if (fungusHP === 0){
+                clearInterval(regenerate)
             }
         }, 1000)
     }
@@ -133,8 +137,10 @@ function renderAP() {
     let buttons = document.getElementsByClassName('attack-btn')
     let apValue = document.getElementById('ap-meter')
     let apText = document.getElementById('aptext')
-    if (attackPoints < 12) {
+    if (attackPoints < 0){
         attackPoints = 0
+    }
+    if (attackPoints < 12) {
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].disabled = true
         }
@@ -147,8 +153,5 @@ function renderAP() {
 }
 
 
-function showAP(event){
-
-}
 
 
